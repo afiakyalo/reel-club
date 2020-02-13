@@ -7,4 +7,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :city, presence: true
   validates :state, presence: true
+
+  has_many :subscriptions
+  has_many :clubs, through: :subscriptions
 end

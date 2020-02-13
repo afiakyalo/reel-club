@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, navy);
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, teal, navy);
 	background-size: 400% 400%;
 	animation: gradient 120s ease infinite;
 }
@@ -23,4 +23,8 @@ body {
   background-color: #FFEBEB;
   border-radius: 10px;
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+}
+
+.button {
+	background-color: green;
 }

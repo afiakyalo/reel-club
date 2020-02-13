@@ -25,8 +25,8 @@ const IndexContainer = (props) => {
 
   const clubTiles = clubs.map(club => {
     return(
-      <div class="row medium-unstack">
-        <div class="column medium-4">
+      <div className="row medium-unstack">
+        <div className="column small-12 medium-4">
           <ClubTile
             key={club.id}
             clubInfo={club}
