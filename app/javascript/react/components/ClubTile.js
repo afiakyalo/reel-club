@@ -1,16 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ClubTile = (props) => {
-  const { name, description, genre } = props.clubInfo
+  const { id, name, description, genre } = props.clubInfo
   return(
-    <div className="callout">
-      <h3 id="name">{name}</h3>
-      <p id="description">{description}</p>
-      <p id="genre">Main Genre: {genre}</p>
-      <div>
-        <a href="" className="button">Join</a>
+    <Link to={`/clubs/${id}`}>
+      <div className="callout">
+        <h3 id="name">{name}</h3>
+        <p id="description">{description}</p>
+        <p id="genre">Main Genre: {genre}</p>
+        <div>
+          <button href="" className="button">Join</button>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

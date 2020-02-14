@@ -1,3 +1,3 @@
 class ClubSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :genre
+  attributes :id, :name, :description, :genre, :users
 end
