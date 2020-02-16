@@ -10,10 +10,7 @@ const SearchBar = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const body = JSON.stringify({
-      search_string: search
-    })
-    props.searchMovie(body)
+    props.searchMovie(search)
   }
 
   return(

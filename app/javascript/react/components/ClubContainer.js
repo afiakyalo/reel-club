@@ -7,6 +7,7 @@ const ClubContainer = (props) => {
   const[ club, setClub ] = useState({})
   const[ members, setMembers ] = useState([])
   const[ movie, setMovie ] = useState({})
+  const[ searchedMovies, setSearchedMovies ] = useState([])
 
   let clubId = props.match.params.id
 
@@ -31,17 +32,18 @@ const ClubContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   },[])
 
-  const searchMovie = (params) => {
-    fetch('/api/v1/movies_controller/search.json', {
+  const searchMovie = (formPayload) => {
+    debugger
+    fetch(`/movies/search`, {
       method: 'POST',
-      body: body,
+      body: JSON.stringify(formPayload),
       credentials: 'same-origin',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
     .then(body => {
       debugger
-      setMovie(movie)
+      setSearchedMovies([body])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
