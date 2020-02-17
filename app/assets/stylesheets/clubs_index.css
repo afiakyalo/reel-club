@@ -1,7 +1,7 @@
+
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, teal, navy);
-	background-size: 400% 400%;
-	animation: gradient 120s ease infinite;
+	background-image: url("https://images.unsplash.com/photo-1505775561242-727b7fba20f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+	/* background-image: url("https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"); */
 }
 
 @keyframes gradient {
@@ -16,15 +16,44 @@ body {
 	}
 }
 
+.row {
+	display: inline-grid;
+	grid-template-columns: minmax(min-content, 300px);
+}
+
+#app {
+	text-align: center;
+  position: relative;
+}
+
+.fa-users {
+	font-size: 30px;
+	color: #F49931;
+}
+
 .callout {
   border: solid 1px black;
   padding: 15px;
   margin: 20px;
-  background-color: #FFEBEB;
+  background-color: black;
+	opacity: 0.6;
   border-radius: 10px;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 200;
+	height: 300px;
+	overflow: scroll;
+}
+
+#name {
+	font-weight: bold;
+	font-variant: small-caps;
 }
 
 .button {
 	background-color: green;
+	border-radius: 10px;
+	padding-right: 30px;
+  padding-left: 30px;
 }
