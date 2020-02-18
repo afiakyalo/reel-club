@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get "/clubs", to: "homes#index"
+  get "/user_profile", to: "homes#index"
 
   namespace :api do
     namespace :v1 do

@@ -17,7 +17,7 @@
 
         <section class="top-bar-section">
           <%- if current_user -%>
-            <img class="thumbnail color" src=<%= current_user.avatar %>>
+            <%=  link_to current_user.avatar, user_profile_path%>
             <p class="links"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
           <%- else -%>
             <p class="links"><%= link_to 'Sign Up', new_user_registration_path %></p>
