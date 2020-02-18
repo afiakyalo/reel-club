@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :subscriptions
   has_many :clubs, through: :subscriptions
 end
