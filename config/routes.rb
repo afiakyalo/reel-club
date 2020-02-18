@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   end
 
   get "/clubs", to: "homes#index"
+  get "/clubs/:id", to: "homes#index"
+  post "/api/v1/movies/search", to: "movies#search"
 
   namespace :api do
     namespace :v1 do
-      resources :clubs, only: [:index]
+      resources :clubs, only: [:index, :show]
     end
   end
 end
