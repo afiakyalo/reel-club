@@ -34,7 +34,7 @@ const ClubContainer = (props) => {
 
   const searchMovie = (formPayload) => {
     debugger
-    fetch(`/movies/search`, {
+    fetch(`/api/v1/movies/search`, {
       method: 'POST',
       body: JSON.stringify(formPayload),
       credentials: 'same-origin',

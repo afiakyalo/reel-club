@@ -1,7 +1,14 @@
 class MoviesController < ApplicationController
   def search
-    @movie = MoviesWrapper.where("name ILIKE ?", "%#{params['search_string']}%")
-    render json: @amovie
     binding.pry
+    @search = TMDb::Search.new
+    @search.query(search_params)
+    render json: @amovie
+  end
+
+  private
+
+  def search_params
+    params.require(:movie).permit(:search)
   end
 end
