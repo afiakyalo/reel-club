@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 
 import MemberTile from "./MemberTile"
 import MovieTile from "./MovieTile"
+import DiscussionBoard from "./DiscussionBoard"
+import ClubStats from "./ClubStats"
 
 const ClubContainer = (props) => {
   const[ club, setClub ] = useState({})
@@ -65,16 +67,27 @@ const ClubContainer = (props) => {
   return(
     <div>
       <h3>{club.name}</h3>
-      <div className="callout">
-        <h5>Members</h5>
-        {memberTiles}
-      </div>
-      <div className="callout">
-        <h5>Movie</h5>
-        <MovieTile
-          movie={movie}
-          searchMovie={searchMovie}
-        />
+      <div className="grid-x">
+        <div className="cell large-8 callout">
+          <h5>Movie</h5>
+          <MovieTile
+            movie={movie}
+            searchMovie={searchMovie}
+            />
+        </div>
+
+        <div className="cell large-3 board callout">
+          <ClubStats />
+        </div>
+
+        <div className="cell large-8 board callout">
+          <DiscussionBoard />
+        </div>
+
+        <div className="cell large-3 members callout">
+          <h5>Members</h5>
+          {memberTiles}
+        </div>
       </div>
     </div>
   )

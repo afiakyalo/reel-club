@@ -2,7 +2,7 @@ import React from "react"
 
 const MemberTile = (props) => {
   return(
-    <h4 className="callout">@{props.username}</h4>
+    <h4>@{props.username}</h4>
   )
 }
 
