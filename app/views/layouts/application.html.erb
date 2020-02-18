@@ -3,25 +3,30 @@
 <head>
   <title>ReelClub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <nav class="top-bar">
-    <h1><a href="/">Reel Club</a></h1>
+  <div class="top-bar-container" data-sticky-container>
+    <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
+      <nav class="top-bar">
+        <h1><a id="name" href="/">ReelClub</a></h1>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+        <section class="top-bar-section">
+          <%- if current_user -%>
+            <img class="thumbnail color" src=<%= current_user.avatar %>>
+            <p class="links"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+          <%- else -%>
+            <p class="links"><%= link_to 'Sign Up', new_user_registration_path %></p>
+            <p class="links"><%= link_to 'Sign In', new_user_session_path %></p>
+          <%- end -%>
+        </section>
+      </nav>
+    </div>
+  </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
