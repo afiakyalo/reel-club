@@ -5,3 +5,13 @@
 .members {
   padding-left: 18px;
 }
+
+.search {
+  width: 100%;
+  float: left;
+}
+
+li {
+  list-style-type: none;
+  background-color: white;
+}

@@ -35,10 +35,10 @@ body {
   border: solid 1px black;
   padding: 15px;
   margin: 20px;
-  background-color: black;
+  background-color: #E4FDE1;
 	opacity: 0.6;
   border-radius: 10px;
-	color: white;
+	color: black;
 	text-align: center;
 	font-size: 20px;
 	font-weight: 200;

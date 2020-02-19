@@ -1,27 +1,41 @@
 class Api::V1::MoviesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+  before_action :authenticate_user!, only: [:create]
+
+  def index
+    movie_wrapper = MoviesWrapper.retrieve_movies(query)
+    render json: movie_wrapper.movie_urls
+  end
 
   def search
+    query = search_params["query"]
+    all_movies = MoviesWrapper.retrieve_movies(query)
+
+    if all_movies.length < 1
+      flash.now[:error] = "Could not find the movie"
+      render json: { error: "Movie not found" }, status: :unprocessable_entity
+    else
+      render json: all_movies
+    end
+  end
+
+  def create
+    movie = Movie.new(selected_params)
     binding.pry
-    @movie = Tmdb::Search(search_params)
-    render json: @amovie
+    if movie.save
+      render json: { movie: movie }
+    else
+      render json: { error: movie.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
 
   def search_params
-    params.require(:movie).permit(:search)
+    params.require(:search_string).permit(:query)
   end
 
-  # def index
-  #   movie_wrapper = MoviesWrapper.retrieve_movies("mad max")
-  #   render json: movie_wrapper.movie_urls
-  # end
-  #
-  # def search
-  #   binding.pry
-  #   @movie = MoviesWrapper.where("name ILIKE ?", "%#{params['search_string']}%")
-  #   render json: @amovie
-  #   binding.pry
-  # end
+  def selected_params
+    params.require(:movie).permit(:id, :title, :synopsis, :release_date, :rating)
+  end
 end
