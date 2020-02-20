@@ -19,3 +19,8 @@ li {
 .movie-tile {
   height: 350px;
 }
+
+.poster {
+  float: left;
+  margin-left: 20px;
+}

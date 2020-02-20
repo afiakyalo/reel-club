@@ -21,7 +21,6 @@ class Api::V1::MoviesController < ApplicationController
 
   def create
     movie = Movie.new(selected_params)
-    binding.pry
     if movie.save
       render json: { movie: movie }
     else

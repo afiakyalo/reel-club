@@ -2,7 +2,7 @@ import React from "react"
 
 const MovieTile = (props) => {
   const { movie } = props
-  let movieobj, title, synopsis, release_date, rating, image;
+  let title, synopsis, release_date, rating, image;
 
   if(movie) {
     title = movie.title,
@@ -20,7 +20,13 @@ const MovieTile = (props) => {
   return(
     <>
       <h3>Movie of the Week</h3>
-      <img src={`http://image.tmdb.org/t/p/w185/${image}`}/>
+      <img className="poster" src={`http://image.tmdb.org/t/p/w185/${image}`}/>
+      <div>
+        <span>{title}</span>
+        <p id="synopsis">{synopsis}</p>
+        <p id="rating">{rating}</p>
+        <p id="date">{release_date}</p>
+      </div>
       <input onClick={handleClick} type="submit" value="save"/>
     </>
   )

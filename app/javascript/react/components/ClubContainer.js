@@ -4,7 +4,7 @@ import MemberTile from "./MemberTile"
 import MovieTile from "./MovieTile"
 import DiscussionBoard from "./DiscussionBoard"
 import ClubStats from "./ClubStats"
-import SearchComponent from "./SearchComponent"
+import SearchBar from "./SearchBar"
 
 
 const ClubContainer = (props) => {
@@ -73,8 +73,6 @@ const ClubContainer = (props) => {
     )
   })
 
-
-  // post fetch to movie database to save
   const saveMovie = (movie) => {
    fetch(`/api/v1/clubs/${clubId}/movies`, {
      credentials: 'same-origin',
@@ -120,7 +118,7 @@ const ClubContainer = (props) => {
           saveMovie={saveMovie}
         />
       </div>
-      
+
       <div className="grid-x">
 
         <div className="cell large-8 board callout">
@@ -133,7 +131,7 @@ const ClubContainer = (props) => {
         </div>
 
         <div className="cell large-3 board callout">
-          <SearchComponent
+          <SearchBar
             searchMovie={searchMovie}
             searchedMovies={searchedMovies}
             setSelectedMovie={setSelectedMovie}
