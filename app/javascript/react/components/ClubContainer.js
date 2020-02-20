@@ -97,7 +97,6 @@ const ClubContainer = (props) => {
    .then(response => response.json())
    .then(response => {
      if (response.movie) {
-       debugger
        setClubMovies([...clubMovies, response.movie])
      } else {
        setErrors(response.errors)
@@ -114,17 +113,15 @@ const ClubContainer = (props) => {
   return(
     <div>
       <h3>{club.name}</h3>
-      <div className="grid-x">
-        <div className="cell large-8 callout">
-          <MovieTile
-            movie={movie}
-            saveMovie={saveMovie}
-          />
-        </div>
 
-        <div className="cell large-3 board callout">
-          <ClubStats />
-        </div>
+      <div className="movie-tile">
+        <MovieTile
+          movie={movie}
+          saveMovie={saveMovie}
+        />
+      </div>
+      
+      <div className="grid-x">
 
         <div className="cell large-8 board callout">
           <DiscussionBoard />
@@ -135,7 +132,7 @@ const ClubContainer = (props) => {
           {memberTiles}
         </div>
 
-        <div className="cell large-11 board callout">
+        <div className="cell large-3 board callout">
           <SearchComponent
             searchMovie={searchMovie}
             searchedMovies={searchedMovies}
@@ -143,6 +140,11 @@ const ClubContainer = (props) => {
             setSearchedMovies={setSearchedMovies}
           />
         </div>
+
+        <div className="cell large-8 board callout">
+          <ClubStats />
+        </div>
+
       </div>
     </div>
   )

@@ -38,5 +38,4 @@ class MoviesWrapper
     end
     return movies_list
   end
-
 end

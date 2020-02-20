@@ -1,15 +1,15 @@
 import React from "react"
 
 const MovieTile = (props) => {
-  let movie
-  let title
-  let synopsis
-  let release_date
-  if(props.movie) {
-    movie = props.movie,
-    title = props.movie.title,
-    synopsis = props.movie.synopsis,
-    release_date = props.movie.release_date
+  const { movie } = props
+  let movieobj, title, synopsis, release_date, rating, image;
+
+  if(movie) {
+    title = movie.title,
+    synopsis = movie.synopsis,
+    release_date = movie.release_date
+    rating = movie.rating
+    image = movie.poster
   }
 
   const handleClick = (event) => {
@@ -20,7 +20,7 @@ const MovieTile = (props) => {
   return(
     <>
       <h3>Movie of the Week</h3>
-      <p>{title}</p>
+      <img src={`http://image.tmdb.org/t/p/w185/${image}`}/>
       <input onClick={handleClick} type="submit" value="save"/>
     </>
   )
