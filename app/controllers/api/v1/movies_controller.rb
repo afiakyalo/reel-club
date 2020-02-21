@@ -3,8 +3,8 @@ class Api::V1::MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
-    movie_wrapper = MoviesWrapper.retrieve_movies(query)
-    render json: movie_wrapper.movie_urls
+    club = Club.find(params["club_id"])
+    render json: club.movies
   end
 
   def search
