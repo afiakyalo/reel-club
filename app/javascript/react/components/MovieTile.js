@@ -1,7 +1,7 @@
 import React from "react"
 
 const MovieTile = (props) => {
-  const { movie } = props
+  const { movie, errors } = props
   let title, synopsis, release_date, rating, image;
 
   if(movie) {
@@ -20,6 +20,7 @@ const MovieTile = (props) => {
   return(
     <>
       <h5>Movie of the Week</h5>
+      <h5>{errors}</h5>
       <img className="poster" src={`http://image.tmdb.org/t/p/w185/${image}`}/>
       <div>
         <span id="title">{title}</span>

@@ -22,12 +22,13 @@ class Api::V1::MoviesController < ApplicationController
   def create
     movie = Movie.new(selected_params)
     club = Club.find(params["club_id"])
-    binding.pry
 
     if club.movies.exists?(['title LIKE ?', "#{movie.title}"])
-      flash.now[:error] = "Club already watched this movie"
-      render json: { error: movie.errors.full_messages }
+      flash.now[:error] = "#{club.name} already watched this movie. Please select another movie"
+      render json: { error: flash.now[:error] }
       return false
+    else
+      club.movies.push(movie)
     end
 
     if movie.save

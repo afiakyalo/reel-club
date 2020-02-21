@@ -99,7 +99,7 @@ const ClubContainer = (props) => {
      if (response.movie) {
        setClubMovies([...clubMovies, response.movie])
      } else {
-       setErrors(response.errors)
+       setErrors(response.error)
      }
    })
    .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -110,27 +110,18 @@ const ClubContainer = (props) => {
     setMovie(movie)
   }
 
-  const coverMovie = () => {
-    if(movie) {
-      <MovieTile
-        movie={movie}
-        key={movie.id}
-        saveMovie={saveMovie}
-      />
-    }
-  }
-
   return(
     <div>
       <h3>{club.name}</h3>
-
 
       <div className="grid-x">
         <div className="movie-tile">
           <MovieTile
             movie={movie}
             saveMovie={saveMovie}
-            />
+            key={movie.id}
+            errors={errors}
+          />
         </div>
 
         <div className="cell small-11 large-8 board callout">
