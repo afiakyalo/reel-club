@@ -14,7 +14,7 @@ class MoviesWrapper
 
     movies.each do |movie|
       movie_obj = {
-        id: movie["id"],
+        tmdb_id: movie["id"],
         title: movie["title"],
         poster: movie["poster_path"],
         synopsis: movie["overview"],

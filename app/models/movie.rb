@@ -5,5 +5,6 @@ class Movie < ApplicationRecord
   validates :rating, presence: true
 
   has_many :users
-  has_many :clubs
+  has_many :selections
+  has_many :clubs, through: :selections
 end

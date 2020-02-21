@@ -13,6 +13,7 @@ const ClubContainer = (props) => {
   const[ movie, setMovie ] = useState({})
   const[ searchedMovies, setSearchedMovies ] = useState([])
   const[ clubMovies, setClubMovies ] = useState([])
+  const[ errors, setErrors ] = useState("")
 
   let clubId = props.match.params.id
 
@@ -32,7 +33,8 @@ const ClubContainer = (props) => {
     .then(clubData => {
       setClub(clubData)
       setMembers(clubData.users)
-      setMovie(clubData.movie)
+      setClubMovies(clubData.movies)
+      setMovie(clubData.movies[clubData.movies.length - 1])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   },[])
@@ -108,29 +110,39 @@ const ClubContainer = (props) => {
     setMovie(movie)
   }
 
+  const coverMovie = () => {
+    if(movie) {
+      <MovieTile
+        movie={movie}
+        key={movie.id}
+        saveMovie={saveMovie}
+      />
+    }
+  }
+
   return(
     <div>
       <h3>{club.name}</h3>
 
-      <div className="movie-tile">
-        <MovieTile
-          movie={movie}
-          saveMovie={saveMovie}
-        />
-      </div>
 
       <div className="grid-x">
+        <div className="movie-tile">
+          <MovieTile
+            movie={movie}
+            saveMovie={saveMovie}
+            />
+        </div>
 
-        <div className="cell large-8 board callout">
+        <div className="cell small-11 large-8 board callout">
           <DiscussionBoard />
         </div>
 
-        <div className="cell large-3 members callout">
+        <div className="cell small-11 large-3 members callout">
           <h5>Members</h5>
           {memberTiles}
         </div>
 
-        <div className="cell large-3 board callout">
+        <div className="cell small-11 large-3 board callout">
           <SearchBar
             searchMovie={searchMovie}
             searchedMovies={searchedMovies}
@@ -139,7 +151,7 @@ const ClubContainer = (props) => {
           />
         </div>
 
-        <div className="cell large-8 board callout">
+        <div className="cell small-11 large-8 board callout">
           <ClubStats />
         </div>
 

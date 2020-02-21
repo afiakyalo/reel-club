@@ -19,10 +19,10 @@ const MovieTile = (props) => {
 
   return(
     <>
-      <h3>Movie of the Week</h3>
+      <h5>Movie of the Week</h5>
       <img className="poster" src={`http://image.tmdb.org/t/p/w185/${image}`}/>
       <div>
-        <span>{title}</span>
+        <span id="title">{title}</span>
         <p id="synopsis">{synopsis}</p>
         <p id="rating">{rating}</p>
         <p id="date">{release_date}</p>

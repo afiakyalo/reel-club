@@ -21,6 +21,15 @@ class Api::V1::MoviesController < ApplicationController
 
   def create
     movie = Movie.new(selected_params)
+    club = Club.find(params["club_id"])
+    binding.pry
+
+    if club.movies.exists?(['title LIKE ?', "#{movie.title}"])
+      flash.now[:error] = "Club already watched this movie"
+      render json: { error: movie.errors.full_messages }
+      return false
+    end
+
     if movie.save
       render json: { movie: movie }
     else
@@ -35,6 +44,6 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def selected_params
-    params.require(:movie).permit(:id, :title, :synopsis, :release_date, :rating)
+    params.require(:movie).permit(:title, :synopsis, :release_date, :rating, :poster, :club_id)
   end
 end
