@@ -5,4 +5,7 @@ class Club < ApplicationRecord
 
   has_many :subscriptions
   has_many :users, through: :subscriptions
+
+  has_many :selections
+  has_many :movies, through: :selections
 end

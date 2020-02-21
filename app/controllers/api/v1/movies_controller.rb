@@ -3,8 +3,8 @@ class Api::V1::MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
-    movie_wrapper = MoviesWrapper.retrieve_movies(query)
-    render json: movie_wrapper.movie_urls
+    club = Club.find(params["club_id"])
+    render json: club.movies
   end
 
   def search
@@ -21,6 +21,16 @@ class Api::V1::MoviesController < ApplicationController
 
   def create
     movie = Movie.new(selected_params)
+    club = Club.find(params["club_id"])
+
+    if club.movies.exists?(['title LIKE ?', "#{movie.title}"])
+      flash.now[:error] = "#{club.name} already watched this movie. Please select another movie"
+      render json: { error: flash.now[:error] }
+      return false
+    else
+      club.movies.push(movie)
+    end
+
     if movie.save
       render json: { movie: movie }
     else
@@ -35,6 +45,6 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def selected_params
-    params.require(:movie).permit(:id, :title, :synopsis, :release_date, :rating)
+    params.require(:movie).permit(:title, :synopsis, :release_date, :rating, :poster, :club_id)
   end
 end
