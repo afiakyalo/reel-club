@@ -62,18 +62,6 @@ const ClubContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  const memberTiles = members.map((member) => {
-    return(
-      <MemberTile
-        key={member.id}
-        id={member.id}
-        username={member.username}
-        city={member.city}
-        state={member.state}
-        description={member.description}
-      />
-    )
-  })
 
   const saveMovie = (movie) => {
    fetch(`/api/v1/clubs/${clubId}/movies`, {
@@ -110,6 +98,19 @@ const ClubContainer = (props) => {
     setMovie(movie)
   }
 
+  const memberTiles = members.map((member) => {
+    return(
+      <MemberTile
+        key={member.id}
+        id={member.id}
+        username={member.username}
+        city={member.city}
+        state={member.state}
+        description={member.description}
+      />
+    )
+  })
+
   return(
     <div>
       <h3>{club.name}</h3>
@@ -119,7 +120,6 @@ const ClubContainer = (props) => {
           <MovieTile
             movie={movie}
             saveMovie={saveMovie}
-            key={movie.id}
             errors={errors}
           />
         </div>

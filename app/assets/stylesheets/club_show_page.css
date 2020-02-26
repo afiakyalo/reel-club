@@ -23,4 +23,5 @@ li {
 .poster {
   float: left;
   margin-left: 20px;
+  height: 60%;
 }
