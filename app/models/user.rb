@@ -12,4 +12,11 @@ class User < ApplicationRecord
 
   has_many :subscriptions
   has_many :clubs, through: :subscriptions
+  after_initialize :set_default_avatar, if: :new_record?
+
+  private
+
+  def set_default_avatar
+    self.avatar ||= "https://reel-club-development.s3.amazonaws.com/uploads/user/avatar/3/user_default_2.png"
+  end
 end
