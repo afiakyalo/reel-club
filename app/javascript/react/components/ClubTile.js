@@ -5,7 +5,7 @@ const ClubTile = (props) => {
   const { id, name, description, genre } = props.clubInfo
   return(
     <Link to={`/clubs/${id}`}>
-      <div className="callout">
+      <div className="callout club">
         <h3 id="name">{name}</h3>
         <p id="description">{description}</p>
         <p id="genre">Main Genre: {genre}</p>

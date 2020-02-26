@@ -16,12 +16,34 @@ li {
   background-color: white;
 }
 
-.movie-tile {
-  height: 350px;
+.movie-details {
+  padding: 30px;
+  margin-left: 200px;
 }
 
 .poster {
   float: left;
   margin-left: 20px;
-  height: 60%;
+  height: 90%;
+  border-radius: 70px;
+  width: 20%;
+  -webkit-box-shadow: -1px 0px 110px 21px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 0px 110px 21px rgba(0,0,0,0.75);
+  box-shadow: -1px 0px 110px 21px rgba(0,0,0,0.75);
+}
+
+p, h3, h5, span {
+  color: white;
+  font-weight: 300;
+}
+
+h3 {
+  font-variant: small-caps;
+  font-weight: 400;
+}
+
+span {
+  font-weight: 400;
+  font-variant: small-caps;
+  font-size: 30px;
 }

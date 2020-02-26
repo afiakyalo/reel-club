@@ -1,11 +1,11 @@
 .top-bar {
-  background-color: #F49931;
-  opacity: 0.8;
+  background-color: #FED766;
 }
 
 .links {
-  background-color: #F49931;
+  background-color: #FED766;
   margin-bottom: auto;
+  font-size: 15px;
 }
 
 .login {

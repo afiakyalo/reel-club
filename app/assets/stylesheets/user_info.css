@@ -1,3 +1,6 @@
 .thumbnail {
-  height: 50px;
+  height: 40px;
+  border-radius: 15px;
+  border-color: #FED766;
+  margin-bottom: auto;
 }

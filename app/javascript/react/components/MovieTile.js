@@ -2,12 +2,12 @@ import React from "react"
 
 const MovieTile = (props) => {
   const { movie, errors } = props
-  let title, synopsis, release_date, rating, image;
+  let title, synopsis, date, rating, image;
 
   if (movie) {
     title = movie.title,
     synopsis = movie.synopsis,
-    release_date = movie.release_date,
+    date = movie.release_date,
     rating = movie.rating,
     image = `http://image.tmdb.org/t/p/w185/${movie.poster}`
   } else {
@@ -23,14 +23,13 @@ const MovieTile = (props) => {
 
   return(
     <>
-      <h5>Movie of the Week</h5>
       <h5>{errors}</h5>
-      <img className="poster" src={image}/>
-      <div>
+      <img className="poster overlay-fade-in" src={image}/>
+      <div className="movie-details">
         <span id="title">{title}</span>
+        <p id="date">Release date: {date}</p>
         <p id="synopsis">{synopsis}</p>
-        <p id="rating">{rating}</p>
-        <p id="date">{release_date}</p>
+        <p id="rating">Rating: {rating}</p>
       </div>
       <input onClick={handleClick} type="submit" value="save"/>
     </>

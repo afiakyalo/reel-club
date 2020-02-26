@@ -9,7 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <div class="top-bar-container" data-sticky-container>
     <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
       <nav class="top-bar">
@@ -22,7 +21,7 @@
             <% else %>
               <img class="thumbnail color" src=<%= current_user.avatar %>>
             <% end %>
-            <p class="links"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+            <span class="links"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span>
           <%- else -%>
             <p class="links"><%= link_to 'Sign Up', new_user_registration_path %></p>
             <p class="links"><%= link_to 'Sign In', new_user_session_path %></p>
