@@ -62,6 +62,33 @@ const ClubContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  const addMember = () => {
+    fetch(`/api/v1/clubs/${clubId}`, {
+      credentials: 'same-origin',
+      method: "PUT",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.user) {
+        setMembers([...members, response.user])
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
 
   const saveMovie = (movie) => {
    fetch(`/api/v1/clubs/${clubId}/movies`, {
@@ -143,7 +170,11 @@ const ClubContainer = (props) => {
         </div>
 
         <div className="cell small-11 large-8 board callout">
-          <ClubStats />
+          <ClubStats
+            addMember={addMember}
+            members={members}
+            clubInfo={club}
+          />
         </div>
 
       </div>
