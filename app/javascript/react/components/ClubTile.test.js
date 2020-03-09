@@ -15,7 +15,9 @@ describe("ClubTile", () => {
     clubInfo = {
       name: "Jailbirds",
       description: "We watch thrillers and comedy",
-      genre: "Thriller"
+      genre: "Thriller",
+      users: ["Jane", "John"],
+      current_user: "Jane"
     }
     wrapper = mount(
       <BrowserRouter>
