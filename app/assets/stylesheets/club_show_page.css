@@ -16,9 +16,14 @@ li {
   background-color: white;
 }
 
+#synopsis {
+  font: italic 1.4em "Fira Sans", serif;;
+}
+
 .movie-details {
   padding: 30px;
   margin-left: 200px;
+  font-family: cursive;
 }
 
 .poster {
